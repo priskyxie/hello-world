@@ -1,0 +1,61 @@
+#!/bin/bash
+#before start this test, delete count.txt and test.txt
+LOOPS=3
+BOARD_NUMBERS=1
+WORKING_DIR="/root/test"
+ATITOOL_PATH="/root/tools/atitool"
+
+
+#Test preparing
+if [ ! -e $WORKING_DIR/count.txt ]; then
+    touch $WORKING_DIR/count.txt
+    touch $WORKING_DIR/test.txt
+fi
+
+
+check_board_number()
+{
+    ${ATITOOL_PATH}/atitool -i |grep -i 0x738 |tee -a $WORKING_DIR/test.txt
+    boards=`$ATITOOL_PATH/atitool -i |grep -i 0x738 |wc -l`
+    if [ $boards -eq $BOARD_NUMBERS ]; then
+        echo "Boards number check passed" |tee -a $WORKING_DIR/test.txt
+    else
+        echo "Boards number check failed" |tee -a $WORKING_DIR/test.txt
+        return
+    fi
+}
+
+check_rocm_loading()
+{
+    boards=`/opt/rocm/bin/rocminfo |grep "amdhsa--gfx908" |wc -l`
+    if [ $boards -eq $BOARD_NUMBERS ]; then
+        echo "Rocm loaded successfully" |tee -a $WORKING_DIR/test.txt
+    else
+        echo "Rocm loading failed" |tee -a $WORKING_DIR/test.txt
+    fi
+}
+
+current_count=`cat $WORKING_DIR/count.txt |wc -l`
+echo $current_count
+if [ $current_count -lt $LOOPS ]; then
+    echo `date` test cycle $current_count |tee -a $WORKING_DIR/count.txt
+    #Check point#1: if any boards miss
+    check_board_number
+
+    #Check point#2: if ROCm loaded successfully
+    check_rocm_loading
+
+    # APP you need to run
+    #/root/MIOpen/build/bin/MIOpenDriver conv -t 1 -V 0 -F 0 -s 0 -W 12 -H 12 -c 647 -n 100 -k 32 -y 3 -x 3 -p 0 -q 0 -u 1 -v 1 |tee -a $WORKING_DIR/test.txt
+    #if [ $? -ne 0 ]; then
+	#    echo "Cycle $current_count MIOpen test failed" |tee -a $WORKING_DIR/test.txt
+    #else
+	#    echo "Cycle $current_count MIOpen test passed" |tee -a $WORKING_DIR/test.txt
+    #fi
+    #shutdown -r 1  
+    # sleep 5
+    reboot
+else
+    echo Test cycles reach to $LOOPS, Exit...
+fi
+
