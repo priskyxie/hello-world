@@ -1,0 +1,7 @@
+python,2
+repo,rocmqa/pyc2-10603-py2:ub16.04
+loopall,1
+atirez,100
+#model,dataset,batch-size,epoch-size,num-epoch,loops
+resnet50,imagenet,256,10000,91,1
+resnet50,none,256,10000,91,1

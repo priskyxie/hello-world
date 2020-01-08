@@ -1,0 +1,4 @@
+python,2
+repo,sunway513/hipcaffe:rocm1.8.2-rc5-v1
+loopall,1
+atirez,1000

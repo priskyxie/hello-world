@@ -1,0 +1,46 @@
+python3
+#sunway513/hiptensorflow:rocm1.9-190-tf1.10
+rocm/tensorflow:latest
+/drives/tensordata/im
+/drives/tensordata/ci
+#model,dataset,batchsize,batches,loops
+#googlenet,imagenet,64,10000,1
+#googlenet,none,64,10000,1
+#alexnet,imagenet,64,10000,1
+#alexnet,none,64,10000,1
+#resnet50,imagenet,64,100,1
+#resnet50,none,64,10000,1
+#resnet152,imagenet,64,10000,1
+#resnet152,none,64,10000,1
+#inception3,imagenet,64,10000,1
+#inception3,none,64,10000,1
+#inception4,imagenet,64,10000,1
+#inception4,none,64,10000,1
+#vgg11,imagenet,64,10000,1
+#vgg11,none,64,10000,1
+#vgg16,imagenet,64,10000,1
+#vgg16,none,64,10000,1
+#SC18 DEMO - Stage 1 - Get Functional Performance Data
+resnet50,none,128,300,1
+resnet50,none,64,300,1
+alexnet,none,128,300,1
+inception3,none,32,300,1
+inception3,none,128,300,1
+inception4,none,32,300,1
+vgg16,none,64,300,1
+#SC18 DEMO - Stage 2 - Probe stress
+#resnet50,none,128,10000,1
+#resnet50,none,64,10000,1
+#alexnet,none,128,10000,1
+#inception3,none,32,10000,1
+#inception3,none,128,10000,1
+#inception4,none,32,10000,1
+#vgg16,none,64,10000,1
+#SC18 DEMO - Stage 3 - Overnight
+#resnet50,none,128,160000,1
+#resnet50,none,64,160000,1
+#alexnet,none,128,160000,1
+#inception3,none,32,160000,1
+#inception3,none,128,160000,1
+#inception4,none,32,160000,1
+#vgg16,none,64,160000,1

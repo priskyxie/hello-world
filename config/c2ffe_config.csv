@@ -1,0 +1,11 @@
+#convnet_benchmarks.py --model Inception --batch_size 256 --iterations 200 
+python,2
+repo,rocmqa/c2:1004-rocm2.8int-py2-ub16.04
+loopall,1
+atirez,1000
+#model,batchsize,iterations,loops
+Inception,256,10000,1
+Alexnet,1024,10000,1
+Resnet50,64,10000,1
+
+

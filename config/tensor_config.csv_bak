@@ -1,0 +1,24 @@
+python,3
+# !!Select one of the repos below. First repo is for ROCM2.0 RC
+#repo,sunway513/hiptensorflow:rocm2.0-rc1-tf1.12
+# !the following repo is for ROCM1.9 RC. For multi GPUs, add flag '--vmfix'
+repo,rocm/tensorflow:latest 
+imagenet,/tensor/imag
+cifar,/tensor/cifa
+loopall,1
+atirez,1000
+#model,dataset,batchsize,batches,loops
+googlenet,imagenet,64,10000,1
+googlenet,none,64,10000,1
+alexnet,imagenet,64,10000,1
+alexnet,none,64,10000,1
+resnet50,imagenet,64,10000,1
+resnet50,none,64,10000,1
+resnet152,imagenet,64,10000,1
+resnet152,none,64,10000,1
+inception3,imagenet,64,10000,1
+inception3,none,64,10000,1
+inception4,imagenet,64,10000,1
+inception4,none,64,10000,1
+vgg11,imagenet,64,10000,1
+vgg11,none,64,10000,1

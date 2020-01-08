@@ -1,0 +1,15 @@
+python,3
+# !!Select one of the repos below. First repo is for ROCM2.0 RC
+#repo,sunway513/hiptensorflow:rocm2.0-rc1-tf1.12
+# !the following repo is for ROCM1.9 RC. For multi GPUs, add flag '--vmfix'
+repo,rocmqa/pyc2:1598-hiprevert-py3-ub16.04-miopne-2.2.x
+imagenet,/tensor/imag
+cifar,/tensor/cifa
+loopall,1
+atirez,1000
+#network,batchsize,iterations,fp16,loops
+resnet50,256,10000,none,1
+vgg16,512,10000,1,1
+alexnet,8192,10000,1,1
+alexnet,4096,10000,none,1
+
